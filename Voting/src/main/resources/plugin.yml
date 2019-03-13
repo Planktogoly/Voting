@@ -1,0 +1,15 @@
+name: ${project.artifactId}
+author: Plancktong
+version: ${project.version}
+description: ${project.description}
+softdepend: [NuVotifier]
+main: net.plancktong.voting.Voting
+commands:
+  vote:
+    description: Shows voting information
+  resetvote:
+    description: resets votes of a player or all the players
+  topvote:
+    description: shows top voters
+  votes:
+    description: reload the config
