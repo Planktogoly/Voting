@@ -22,8 +22,7 @@ public class VotesCommand implements CommandExecutor {
 			
 			player.sendMessage(ChatColor.GRAY + "You have reloaded the config!");
 			return false;
-		}
-		
+		}		
 		return false;
 	}
 

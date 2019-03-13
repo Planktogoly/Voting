@@ -38,6 +38,7 @@ public class SQLDatabase implements Database<Vote> {
 		this.sqlCredentials = new SQLCredentials(config.getString("database.host"), config.getString("database.database"), config.getString("database.username"), config.getString("database.password"));
 	}
 	
+	@Override
 	public void setup() {
 		if (datasource != null) return;
 		
@@ -62,7 +63,8 @@ public class SQLDatabase implements Database<Vote> {
 		}
 	}
 	
-	public void createTables() {
+	@Override
+	public void createTables() {	
 		try {
 			@Cleanup Connection connection = datasource.getConnection();
 			@Cleanup PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS voting"
@@ -79,6 +81,7 @@ public class SQLDatabase implements Database<Vote> {
 		}
 	}
 
+	@Override
 	public Vote load(UUID uuid) {
 		try {
 			@Cleanup Connection connection = datasource.getConnection();
@@ -97,6 +100,7 @@ public class SQLDatabase implements Database<Vote> {
 		}
 	}
 
+	@Override
 	public void save(Vote t) {
 		try {
 			@Cleanup Connection connection = datasource.getConnection();
@@ -111,7 +115,8 @@ public class SQLDatabase implements Database<Vote> {
 			return;
 		}	
 	}
-
+	
+	@Override
 	public boolean remove(Vote t) {
 		try {
 			@Cleanup Connection connection = datasource.getConnection();

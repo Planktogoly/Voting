@@ -27,11 +27,11 @@ public class VoteCommand implements CommandExecutor {
 				String serviceName = args[2];
 				
 				Bukkit.getPluginManager().callEvent(new VotifierEvent(new Vote(serviceName, playerName, "test", new Date().toString())));
-				player.sendMessage("Send a test vote out on " + playerName);
+				player.sendMessage(ChatColor.GREEN + "Send a test vote out on " + playerName);
 				return false;
 			}
 			
-			player.sendMessage("Usage: /vote test <name> <site>");			
+			player.sendMessage(ChatColor.RED + "Usage: /vote test <name> <site>");			
 			return false;
 		}
 				

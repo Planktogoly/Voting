@@ -19,15 +19,12 @@ public class VoteSettings {
 	}
 	
 	public void load() {
-		this.voteMessages = this.config.getBukkitFile().getStringList("messages.vote-command");
-		
-		this.updateTopVotesAfterMinutes = this.config.getBukkitFile().getInt("update-topvotes-minutes");
-				
+		this.voteMessages = this.config.getBukkitFile().getStringList("messages.vote-command");		
+		this.updateTopVotesAfterMinutes = this.config.getBukkitFile().getInt("update-topvotes-minutes");				
 	}
 
 	public void reload() {
-		this.config = new ConfigFile(Voting.getInstance(), "settings.yml");
-		
+		this.config = new ConfigFile(Voting.getInstance(), "settings.yml");		
 		this.load();
 	}
 

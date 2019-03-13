@@ -3,6 +3,7 @@ package net.plancktong.voting.commands;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -22,10 +23,11 @@ public class TopVoteCommand implements CommandExecutor {
 		
 		int index = 1;
 		for (Entry<String, Integer> person : topVotes.entrySet()) {
-			player.sendMessage("#" + index + " - " + person.getKey() + " Votes: " + person.getValue());
+			player.sendMessage(ChatColor.GOLD + "#" + index + 
+					ChatColor.GRAY + " - " + ChatColor.DARK_GRAY + person.getKey() + 
+					ChatColor.GRAY + " Votes: " + person.getValue());
 			index++;
-		}
-		
+		}		
 		return false;
 	}
 

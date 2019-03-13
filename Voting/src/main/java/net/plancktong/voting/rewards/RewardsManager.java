@@ -21,7 +21,7 @@ public class RewardsManager {
 		
 	private ArrayList<Reward> rewards;
 	
-	private Reward defaultReward;
+	@Getter private Reward defaultReward;
 	@Getter private Reward allReward;
 	
 	public RewardsManager() {
@@ -33,7 +33,6 @@ public class RewardsManager {
 		
 		ConfigFile config = Voting.getInstance().getVoteSettings().getConfig();
 		ConfigurationSection rewardsSection = config.getBukkitFile().getConfigurationSection("rewards");
-		
 		
 		for (String configKey : rewardsSection.getKeys(false)) {
 			ConfigurationSection rewardSection = rewardsSection.getConfigurationSection(configKey);

@@ -34,8 +34,7 @@ public class VoteListener implements Listener {
 		
 		rewardsManager.runActions(player, reward);
 		
-		if (rewardsManager.checkIfPlayerVotedOnAllSites(player)) {
-			rewardsManager.runActions(player, Voting.getInstance().getRewardsManager().getAllReward());
-		}
+		if (rewardsManager.checkIfPlayerVotedOnAllSites(player)) rewardsManager.runActions(player, 
+																	Voting.getInstance().getRewardsManager().getAllReward());
 	}
 }

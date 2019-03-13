@@ -33,8 +33,7 @@ public class Voting extends JavaPlugin {
 		this.voteSettings = new VoteSettings();
 		this.voteSettings.load();
 		
-		this.voteDatabase = new SQLDatabase();
-		
+		this.voteDatabase = new SQLDatabase();		
 		this.voteDatabase.setup();
 		this.voteDatabase.createTables();
 		
