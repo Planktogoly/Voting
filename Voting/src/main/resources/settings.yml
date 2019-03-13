@@ -3,6 +3,11 @@ messages:
   - '&4Voting sites:'
   
 update-topvotes-minutes: 10
+database:
+  host:
+  database:
+  username:
+  password:
 
 rewards:
   default:

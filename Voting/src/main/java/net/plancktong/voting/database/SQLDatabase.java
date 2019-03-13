@@ -10,12 +10,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.bukkit.configuration.file.FileConfiguration;
+
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.pool.HikariPool.PoolInitializationException;
 
 import lombok.Cleanup;
 import net.plancktong.voting.NameFetcher;
+import net.plancktong.voting.Voting;
 import net.plancktong.voting.database.credentials.SQLCredentials;
 import net.plancktong.voting.model.Vote;
 
@@ -30,7 +33,9 @@ public class SQLDatabase implements Database<Vote> {
 	private SQLCredentials sqlCredentials;
 	
 	public SQLDatabase() {
-		this.sqlCredentials = new SQLCredentials("localhost", "voting", "root", "");
+		FileConfiguration config = Voting.getInstance().getVoteSettings().getConfig().getBukkitFile();
+		
+		this.sqlCredentials = new SQLCredentials(config.getString("database.host"), config.getString("database.database"), config.getString("database.username"), config.getString("database.password"));
 	}
 	
 	public void setup() {

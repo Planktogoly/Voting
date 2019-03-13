@@ -20,8 +20,7 @@ public class Voting extends JavaPlugin {
 
 	@Getter private static Voting instance;
 	
-	@Getter private Database<Vote> voteDatabase;	
-	
+	@Getter private Database<Vote> voteDatabase;		
 	@Getter private VoteSettings voteSettings;
 	
 	@Getter private RewardsManager rewardsManager;
@@ -34,26 +33,30 @@ public class Voting extends JavaPlugin {
 		this.voteSettings = new VoteSettings();
 		this.voteSettings.load();
 		
-		this.rewardsManager = new RewardsManager();
-		this.rewardsManager.loadRewards();
-		
-		this.topVoteManager = new TopVoteManager();
-		
 		this.voteDatabase = new SQLDatabase();
 		
 		this.voteDatabase.setup();
 		this.voteDatabase.createTables();
 		
+		this.rewardsManager = new RewardsManager();
+		this.rewardsManager.loadRewards();
+		
+		this.topVoteManager = new TopVoteManager();
+		
+		initializePlugin();
+	}
+	
+	@Override
+	public void onDisable() {
+		instance = null;
+	}
+	
+	private void initializePlugin() {
 		Bukkit.getPluginManager().registerEvents(new VoteListener(), this);
 		
 		this.getCommand("vote").setExecutor(new VoteCommand());
 		this.getCommand("resetvote").setExecutor(new ResetVoteCommand());
 		this.getCommand("topvote").setExecutor(new TopVoteCommand());
 		this.getCommand("votes").setExecutor(new VotesCommand());
-	}
-	
-	@Override
-	public void onDisable() {
-		instance = null;
 	}
 }
